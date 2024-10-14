@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +17,9 @@ public class User {
     @Transient
     private Integer age;
     private LocalDate dob;
+
+    @OneToMany(mappedBy = "user")
+    private List<Card> cards;
 
     public User(String email, String name, LocalDate dob) {
         this.email = email;
